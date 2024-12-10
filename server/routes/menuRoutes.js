@@ -3,7 +3,7 @@ const router = express.Router();
 const Menu = require('../models/Menu');
 const Item = require('../models/Item');
 
-// Create a new menu
+// Create new menu
 router.post('/add-menu', async (req, res) => {
   const { name, description } = req.body;
 

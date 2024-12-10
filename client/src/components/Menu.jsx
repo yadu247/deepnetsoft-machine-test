@@ -122,66 +122,98 @@ const Menu = () => {
   };
 
   return (
-    <div className="p-8">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold">MENU</h1>
-        <p className="text-gray-600 mt-4">
-          Explore the foods under each category
-        </p>
+    <div className="">
+      <div className="text-center h-72 flex flex-col items-center justify-center relative">
+        <div className="absolute inset-0 bg-[url('./menu-head-bg.png')] bg-cover bg-top"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-65"></div>
+        <div className="relative z-10 text-white flex flex-col justify-center items-center">
+          <h1 className="text-5xl font-bold text-footerBorder">MENU</h1>
+          <p className="text-menuPara mt-4 font-kellyslab lg:w-[60%] px-8">
+            Please take a look at our menu featuring food, drinks, and brunch.
+            If you'd like to place an order, use the "Order Online" button
+            located below the menu.
+          </p>
+        </div>
       </div>
 
-      <div className="flex space-x-6 mb-8 overflow-x-auto">
-        {categories.map(category => (
-          <div
-            key={category.name}
-            className="border rounded-md p-4 cursor-pointer hover:bg-gray-100"
-            onClick={() => {
-              setSelectedCategory(category.name);
-              setSelectedCategoryId(category._id);
-            }}
-          >
-            <h2 className="text-xl font-semibold">{category.name}</h2>
-            <p className="text-gray-500 text-sm">{category.description}</p>
-          </div>
-        ))}
+      <div className="relative bg-[url('./categories-bg.png')] bg-contain bg-center h-auto">
+        <div className="absolute inset-0 bg-black bg-opacity-90"></div>
+        <div className="relative flex space-x-2 overflow-x-auto justify-center p-10">
+          {categories.map(category => (
+            <div
+              key={category.name}
+              className={`border border-navbarActive  cursor-pointer flex flex-col items-center justify-center min-w-24 p-8 h-12
+        ${
+          selectedCategory === category.name
+            ? 'bg-navbarActive text-white'
+            : 'bg-black text-white'
+        }`}
+              onClick={() => {
+                setSelectedCategory(category.name);
+                setSelectedCategoryId(category._id);
+              }}
+            >
+              <h2 className="text-xl font-semibold">{category.name}</h2>
+            </div>
+          ))}
 
-        <button
-          className="border-2 border-blue-500 rounded-md p-4 flex justify-center items-center text-blue-500"
-          onClick={openModal}
-        >
-          + Add Category
-        </button>
+          <button
+            className="border-2 border-navbarActive rounded-md p-8 flex justify-center items-center text-navbarActive w-12 h-12 text-4xl"
+            onClick={openModal}
+          >
+            +
+          </button>
+        </div>
       </div>
 
       {selectedCategory && (
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">
-            {selectedCategory} Items
-          </h2>
-
-          <div className="mb-4">
-            <button
-              className="bg-green-500 text-white p-2 rounded-md"
-              onClick={openItemModal}
-            >
-              + Add Item
-            </button>
-          </div>
-
-          <div>
-            {items[selectedCategory]?.map((item, index) => (
-              <div key={index} className="border-b py-4">
-                <h3 className="text-xl font-semibold">{item.name}</h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
-                <p className="text-gray-500">Price: ${item.price}</p>
+        <div className="relative p-4">
+          <div className="absolute inset-0 bg-[url('./menu-bg.png')] bg-no-repeat bg-cover bg-center before:absolute before:inset-0 before:bg-black before:opacity-80"></div>
+          <div className="lg:p-32 md:p-12 sm:p-8">
+            <div className="relative border border-white lg:p-12 md:p-8 sm:p-4">
+              <img
+                src="./menu-juice-1.png"
+                alt="Top-left decoration"
+                className="absolute -top-8 -left-8 w-40 h-40 object-contain"
+              />
+              <img
+                src="./menu-juice-2.png"
+                alt="Bottom-right decoration"
+                className="absolute -bottom-8 -right-2 w-40 h-40"
+              />
+              <h2 className="text-5xl mb-6 text-center font-bold text-white">
+                {selectedCategory}
+              </h2>
+              <div className="mb-6 flex justify-center">
+                <button
+                  className="bg-navbarActive text-white px-6 py-2 rounded-md"
+                  onClick={openItemModal}
+                >
+                  + Add Item
+                </button>
               </div>
-            ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 p-10">
+                {items[selectedCategory]?.map((item, index) => (
+                  <div key={index} className=" p-2 shadow-md ">
+                    <div className="flex justify-between">
+                      <h3 className="text-xl font-semibold text-white mb-2">
+                        {item.name}
+                      </h3>
+                      <p className="text-white font-semibold">${item.price}</p>
+                    </div>
+                    <p className="text-xs text-white mb-4 font-kellyslab break-words">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}
 
       {modalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div className="fixed z-10 inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-md w-96">
             <h3 className="text-xl font-semibold mb-4">Add New Category</h3>
             <input
@@ -216,7 +248,7 @@ const Menu = () => {
       )}
 
       {itemModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+        <div className="fixed z-10 inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-md w-96">
             <h3 className="text-xl font-semibold mb-4">
               Add New Item to {selectedCategory}

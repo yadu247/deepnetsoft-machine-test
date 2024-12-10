@@ -2,23 +2,52 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-6 mt-auto">
-      <div className="container mx-auto text-center">
-        <p className="text-lg">
-          &copy; 2024 DEEPNETSOFT Inc. All rights reserved.
-        </p>
-        <p className="mt-2">
-          Address: First floor, Geo infopark, Infopark EXPY, Kakkanad
-        </p>
-        <p className="mt-1">
-          Contact us:{' '}
-          <a
-            href="mailto:info@deepnetsoft.com"
-            className="text-blue-400 hover:text-blue-600"
-          >
-            info@deepnetsoft.com
-          </a>
-        </p>
+    <footer className="bg-black text-white mt-auto flex flex-col">
+      <div class="lg:px-40 md:px-20 py-8 text-white">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
+            <h3 class="text-lg font-semibold mb-2 text-navbarActive">
+              CONNECT WITH US
+            </h3>
+            <ul className="text-logoAsh">
+              <li>+91 9567843340</li>
+              <li>info@deepnetsoft.com</li>
+            </ul>
+          </div>
+          <div class="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
+            <div className="flex flex-col items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="Deepnetsoft Logo"
+                className="w-14 h-14 object-cover relative bottom-12"
+              />
+              <div className="relative bottom-6 ">
+                <div className="text-xl">
+                  <span className="text-navbarActive">DEEP</span> NET
+                  <span className="text-xl text-logoAsh"> SOFT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
+            <h3 class="text-lg font-semibold mb-2 text-navbarActive">
+              Find Us
+            </h3>
+            <ul className="text-logoAsh">
+              <li>First floor, Geo infopark,</li>
+              <li>Infopark EXPY, Kakkanad</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col sm:flex-row justify-around items-center bg-footerBg text-footerText font-lato h-20 ">
+        <p>&copy; 2024 Deepnetsoft Solutions. All rights reserved.</p>
+        <div className="flex">
+          <p>Terms&conditions</p>
+          <p className="ml-5">Privacy Policy</p>
+        </div>
       </div>
     </footer>
   );

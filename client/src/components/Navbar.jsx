@@ -1,28 +1,53 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800 text-white h-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <div className="text-2xl font-bold">DEEPNETSOFT</div>
+    <nav className="lg:flex lg:items-end lg:justify-between bg-navbarBg text-navbarText lg:h-24">
+      <div className="w-full px-4 sm:px-6 lg:px-32 flex items-center justify-between h-16 ">
+        <div className="relative z-10 flex items-center justify-center mt-16">
+          <img
+            src="/logo.png"
+            alt="Deepnetsoft Logo"
+            className="w-14 h-14 object-cover"
+          />
+
+          <div className="hidden md:block lg:block ml-2">
+            <div className="text-xl">
+              <span className="text-navbarActive">DEEP</span> NET
+            </div>
+            <div className="text-xl text-logoAsh">SOFT</div>
+          </div>
+        </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-4">
-          <Link to="/" className="hover:text-gray-400">
+        <div className="hidden md:flex space-x-4 ">
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? 'text-navbarActive' : '')}
+          >
             HOME
-          </Link>
-          <Link to="/menu" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/menu"
+            className={({ isActive }) => (isActive ? 'text-navbarActive' : '')}
+          >
             MENU
-          </Link>
-          <Link to="/reservation" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/reservation"
+            className={({ isActive }) => (isActive ? 'text-navbarActive' : '')}
+          >
             MAKE A RESERVATION
-          </Link>
-          <Link to="/contact" className="hover:text-gray-400">
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? 'text-navbarActive' : '')}
+          >
             CONTACT US
-          </Link>
+          </NavLink>
         </div>
 
         {/* Mobile Menu Button */}
@@ -56,34 +81,42 @@ const Navbar = () => {
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
-          <Link
+          <NavLink
             to="/"
-            className="block px-4 py-2 hover:bg-gray-600"
+            className={({ isActive }) =>
+              isActive ? 'text-navbarActive block px-4 py-2' : 'block px-4 py-2'
+            }
             onClick={() => setIsMenuOpen(false)}
           >
             HOME
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/menu"
-            className="block px-4 py-2 hover:bg-gray-600"
+            className={({ isActive }) =>
+              isActive ? 'text-navbarActive block px-4 py-2' : 'block px-4 py-2'
+            }
             onClick={() => setIsMenuOpen(false)}
           >
             MENU
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/reservation"
-            className="block px-4 py-2 hover:bg-gray-600"
+            className={({ isActive }) =>
+              isActive ? 'text-navbarActive block px-4 py-2' : 'block px-4 py-2'
+            }
             onClick={() => setIsMenuOpen(false)}
           >
             MAKE A RESERVATION
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/contact"
-            className="block px-4 py-2 hover:bg-gray-600"
+            className={({ isActive }) =>
+              isActive ? 'text-navbarActive block px-4 py-2' : 'block px-4 py-2'
+            }
             onClick={() => setIsMenuOpen(false)}
           >
             CONTACT US
-          </Link>
+          </NavLink>
         </div>
       )}
     </nav>

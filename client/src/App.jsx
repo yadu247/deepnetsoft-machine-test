@@ -5,25 +5,29 @@ import Menu from './components/Menu';
 import Footer from './components/Footer';
 
 const Home = () => (
-  <div className="flex flex-col justify-between h-full">
+  <div className="flex flex-col items-center h-full">
     <div className="flex-1 p-6">
       <h1 className="text-3xl font-bold py-4">Home Page</h1>
-      <p>Welcome to DEEP NET SOFT.</p>
+      <p className="font-kellyslab">Welcome to DEEP NET SOFT.</p>
     </div>
   </div>
 );
 
 const Reservation = () => (
-  <div className="p-6">
-    <h1 className="text-3xl font-bold py-4">Make A Reservation</h1>
-    <p>Learn more about reservation.</p>
+  <div className="flex flex-col items-center h-full">
+    <div className="flex-1 p-6">
+      <h1 className="text-3xl font-bold py-4">Make A Reservation</h1>
+      <p className="font-kellyslab">Learn more about reservation.</p>
+    </div>
   </div>
 );
 
 const Contact = () => (
-  <div className="p-6">
-    <h1 className="text-3xl font-bold py-4">Contact Us</h1>
-    <p>Have any questions? Reach out to us!</p>
+  <div className="flex flex-col items-center h-full">
+    <div className="flex-1 p-6">
+      <h1 className="text-3xl font-bold py-4">Contact Us</h1>
+      <p className="font-kellyslab">Have any questions? Reach out to us!</p>
+    </div>
   </div>
 );
 
