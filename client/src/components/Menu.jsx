@@ -23,7 +23,7 @@ const Menu = () => {
   useEffect(() => {
     // Fetch categories from the backend
     axios
-      .get('http://localhost:5000/api/menu')
+      .get('https://deepnetsoft-machine-test-backend.onrender.com/api/menu')
       .then(response => {
         setCategories(response.data);
         // Fetch items for each category
@@ -42,7 +42,9 @@ const Menu = () => {
   useEffect(() => {
     if (selectedCategory) {
       axios
-        .get(`http://localhost:5000/api/menu/${selectedCategoryId}/items`)
+        .get(
+          `https://deepnetsoft-machine-test-backend.onrender.com/api/menu/${selectedCategoryId}/items`
+        )
         .then(response => {
           setItems(prevItems => ({
             ...prevItems,
@@ -69,10 +71,13 @@ const Menu = () => {
   const addCategory = () => {
     if (newCategoryName && newCategoryDescription) {
       axios
-        .post('http://localhost:5000/api/menu/add-menu', {
-          name: newCategoryName,
-          description: newCategoryDescription,
-        })
+        .post(
+          'https://deepnetsoft-machine-test-backend.onrender.com/api/menu/add-menu',
+          {
+            name: newCategoryName,
+            description: newCategoryDescription,
+          }
+        )
         .then(response => {
           setCategories([...categories, response.data]);
           setItems({ ...items, [newCategoryName]: [] });
@@ -100,11 +105,14 @@ const Menu = () => {
   const addItem = () => {
     if (newItemName && newItemDescription && newItemPrice) {
       axios
-        .post(`http://localhost:5000/api/menu/${selectedCategoryId}/add-item`, {
-          name: newItemName,
-          description: newItemDescription,
-          price: newItemPrice,
-        })
+        .post(
+          `https://deepnetsoft-machine-test-backend.onrender.com/api/menu/${selectedCategoryId}/add-item`,
+          {
+            name: newItemName,
+            description: newItemDescription,
+            price: newItemPrice,
+          }
+        )
         .then(response => {
           setItems({
             ...items,
