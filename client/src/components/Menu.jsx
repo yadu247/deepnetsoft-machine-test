@@ -23,7 +23,7 @@ const Menu = () => {
   useEffect(() => {
     // Fetch categories from the backend
     axios
-      .get('http://localhost:5000/api/menu')
+      .get('https://deepnetsoft-machine-test-backend.onrender.com/api/menu')
       .then(response => {
         setCategories(response.data);
         // Fetch items for each category
@@ -42,7 +42,9 @@ const Menu = () => {
   useEffect(() => {
     if (selectedCategory) {
       axios
-        .get(`http://localhost:5000/api/menu/${selectedCategoryId}/items`)
+        .get(
+          `https://deepnetsoft-machine-test-backend.onrender.com/api/menu/${selectedCategoryId}/items`
+        )
         .then(response => {
           setItems(prevItems => ({
             ...prevItems,
@@ -69,10 +71,13 @@ const Menu = () => {
   const addCategory = () => {
     if (newCategoryName && newCategoryDescription) {
       axios
-        .post('http://localhost:5000/api/menu/add-menu', {
-          name: newCategoryName,
-          description: newCategoryDescription,
-        })
+        .post(
+          'https://deepnetsoft-machine-test-backend.onrender.com/api/menu/add-menu',
+          {
+            name: newCategoryName,
+            description: newCategoryDescription,
+          }
+        )
         .then(response => {
           setCategories([...categories, response.data]);
           setItems({ ...items, [newCategoryName]: [] });
@@ -100,11 +105,14 @@ const Menu = () => {
   const addItem = () => {
     if (newItemName && newItemDescription && newItemPrice) {
       axios
-        .post(`http://localhost:5000/api/menu/${selectedCategoryId}/add-item`, {
-          name: newItemName,
-          description: newItemDescription,
-          price: newItemPrice,
-        })
+        .post(
+          `https://deepnetsoft-machine-test-backend.onrender.com/api/menu/${selectedCategoryId}/add-item`,
+          {
+            name: newItemName,
+            description: newItemDescription,
+            price: newItemPrice,
+          }
+        )
         .then(response => {
           setItems({
             ...items,
@@ -124,7 +132,7 @@ const Menu = () => {
   return (
     <div className="">
       <div className="text-center h-72 flex flex-col items-center justify-center relative">
-        <div className="absolute inset-0 bg-[url('./menu-head-bg.png')] bg-cover bg-top"></div>
+        <div className="absolute inset-0 bg-[url('https://s3-alpha-sig.figma.com/img/aefd/7aa0/f81b6208cb3da0f5ecc0f0d109ca4bd0?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZeKHm22hElWdMf84VmnZbIdwhYXQ9sKXSQ0Gz0c22AgjC2lsY3ZtEW2KSzEOvkRwTrHfzkX6WSNl~Ji2CySb6Bkdu~DCmkg0tR72ISS-my04KshYLKOHdwxzeVD64rP7pVqMKmGo557fkvDLd5cndy-Qq4HtVbD10yNF~F0Pv4Zn3ozepMOGlJD6UyUdCDHGfSkiPKfhgFPfM0RdGNRI-AbVqtbUhxm7c~K1hALNzareXxwMjCWrAKGqTze4YhZ4M7WoThL5bmkPwgh-5iHbN7svsFBKon2b0Ueh01TVfh1GYdZWmRBlt0Ad-0BlpsYEgUbAIDX-T4bOh8GIpiWMdw__')] bg-cover bg-top"></div>
         <div className="absolute inset-0 bg-black bg-opacity-65"></div>
         <div className="relative z-10 text-white flex flex-col justify-center items-center">
           <h1 className="text-5xl font-bold text-footerBorder">MENU</h1>
@@ -136,7 +144,7 @@ const Menu = () => {
         </div>
       </div>
 
-      <div className="relative bg-[url('./categories-bg.png')] bg-contain bg-center h-auto">
+      <div className="relative bg-[url('https://s3-alpha-sig.figma.com/img/0571/aff9/d875fd6fec8f3801ba095cc39be0e4b1?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RFxLpkEjoVAaVTqtbYQ6wCIrA6xu5Su4oaxaoU4fJXge9N0oT5bfhXf1MvvYyEQKDDglsuCzYjW5UH11gUKShNqp0lx2KqvyRyo7tcQ-UVU9aTd2V8VYR~TT-Bedh6cVgRzyk0b08d~vnAymLEUHwTe29hrgkmqdPUaNYGA9bZLf~vWpJdktWALZ7Rqy30ri3KbMzBJe9nS9zY0dhrPpZn-iojkhXLUAleFXqJ2Q7K4BX-FkenzVxoWVW-5Ig79YAfzOl1XCnnmgR3iGKKTuZrDcAHWqe-BspqDDRhXcEKwSKHRusOF6pFsUJUTFjMA0OrcDjHm~BGtN3WyLNzCJkQ__')] bg-contain bg-center h-auto">
         <div className="absolute inset-0 bg-black bg-opacity-90"></div>
         <div className="relative flex space-x-2 overflow-x-auto justify-center p-10">
           {categories.map(category => (
@@ -168,16 +176,16 @@ const Menu = () => {
 
       {selectedCategory && (
         <div className="relative p-4">
-          <div className="absolute inset-0 bg-[url('./menu-bg.png')] bg-no-repeat bg-cover bg-center before:absolute before:inset-0 before:bg-black before:opacity-80"></div>
+          <div className="absolute inset-0 bg-[url('https://s3-alpha-sig.figma.com/img/53f3/e533/f37f4a258b3eea846bf145fb95b71dfd?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=nRgw8sxp~UhdifTgFxtcrlhGW3pjYBmbnQReM~vBmwT8Ueg~mQOA0RNMuWR8MywmwEcsfz6LTc7VUpvkoamBx3CvWZ-sg8q~q0Mgog-R48YOgPuxRCVKUmK8qJ6fwOREuBM2n0hbG0HMUA5v12a~ZEI0Ysx~Nc0jhJC-oFfVu9Bdgj3mWodm65Kh40AMwDBwdAX9eVMprf-7q4V6tTkrk6VhQDTYc4ZFdZ70UlIXzS4KghPlPyEp5j9vSEbGz81CR29ow24Hks3o-jEiFtSOBr6cvLP~IiYmvkLnwi~MDlP-JpsaQiZKth-YqA5vf3E5jcrW8dlVPvqE14B0DTN8QA__')] bg-no-repeat bg-cover bg-center before:absolute before:inset-0 before:bg-black before:opacity-80"></div>
           <div className="lg:p-32 md:p-12 sm:p-8">
             <div className="relative border border-white lg:p-12 md:p-8 sm:p-4">
               <img
-                src="./menu-juice-1.png"
+                src="https://s3-alpha-sig.figma.com/img/08f1/ba92/09e436820849a421ec0b1fe5126bf9b5?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qvOq7OcG7YwIPJNlFbFB3y6vjgh3b1ytbdNuPQLw-x3HnXoAVXRVWdrWeTnYFyyxQDF0r8XD1n~EZblmk3moMwVN205oycp~2KM4lLCsilx9NElDgJLWsEdBm4a0sA9gjjnBo413ixA-I~~1Ogo10apbZZWPUqRdjoMsozb8wHTW3oIDCx-i5eXyAOMpf~OuDurY8TsCSoAyMoeIY5w865hc9usKFD8hsrTeyf7EAp~VJ2FtT2OrP2fgJXodSSRh9mYLuA8JpOeFpSP2yTMfa8io4ggxn15Xc22dq0ZlaLlsCxyN9jbYd-7TNS8pwnQ-VTOXJkoP0DrJH6Nbt6UPag__"
                 alt="Top-left decoration"
                 className="absolute -top-8 -left-8 w-40 h-40 object-contain"
               />
               <img
-                src="./menu-juice-2.png"
+                src="https://s3-alpha-sig.figma.com/img/6b91/b238/f07a69022d4c64e313237eadaceb997f?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YG1FYzxRykOuaKV2-SvezP7g9vWy6da6y0pSazPtWBcQKcIP860XEQx9WOOk6yH6isJSNgl3cHFosz4SoPNXeMcD2y-9qn87YpnaXuPqzSYNBtgV5CEtIj8vjZMAKiqjAgkLKEk~5PKGVZV40aXecGz1vWC6DlmzyT28z-yr~sqx~dT~jJW15LHGt-gFIwLvASlGKhLz4Tb58-sqmL0LkseU0-8-VE9RyL0F6eUNFH16ZOnW~EDTH4ywvriTf1kKeo4dvb10X~CaYBFD8S2n6JNCtkjwAW4G--gpzKfDoYczZd9neLGrcOLRO6q6SbAyn4OB3bK44jkopBhija-7EA__"
                 alt="Bottom-right decoration"
                 className="absolute -bottom-8 -right-2 w-40 h-40"
               />
@@ -194,7 +202,7 @@ const Menu = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 p-10">
                 {items[selectedCategory]?.map((item, index) => (
-                  <div key={index} className=" p-2 shadow-md ">
+                  <div key={index} className=" p-2">
                     <div className="flex justify-between">
                       <h3 className="text-xl font-semibold text-white mb-2">
                         {item.name}
