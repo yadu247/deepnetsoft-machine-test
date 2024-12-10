@@ -3,10 +3,10 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="bg-black text-white mt-auto flex flex-col">
-      <div class="lg:px-40 md:px-20 py-8 text-white">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
-            <h3 class="text-lg font-semibold mb-2 text-navbarActive">
+      <div className="lg:px-40 md:px-20 py-8 text-white">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
+            <h3 className="text-lg font-semibold mb-2 text-navbarActive">
               CONNECT WITH US
             </h3>
             <ul className="text-logoAsh">
@@ -14,7 +14,7 @@ const Footer = () => {
               <li>info@deepnetsoft.com</li>
             </ul>
           </div>
-          <div class="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
+          <div className="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
             <div className="flex flex-col items-center justify-center">
               <img
                 src="/logo.png"
@@ -30,8 +30,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div class="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
-            <h3 class="text-lg font-semibold mb-2 text-navbarActive">
+          <div className="border border-footerBorder rounded-xl m-4 p-4 flex flex-col items-center">
+            <h3 className="text-lg font-semibold mb-2 text-navbarActive">
               Find Us
             </h3>
             <ul className="text-logoAsh">
