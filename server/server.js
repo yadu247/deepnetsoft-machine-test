@@ -6,7 +6,6 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware
 app.use(express.json());
 app.use(cors());
 
@@ -16,7 +15,6 @@ mongoose
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error: ', err));
 
-// Routes
 app.use('/api/menu', require('./routes/menuRoutes'));
 
 app.listen(port, () => {

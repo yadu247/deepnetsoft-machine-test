@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -22,7 +22,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-4 ">
           <NavLink
             to="/"
@@ -50,7 +49,6 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -74,7 +72,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div
           className={`lg:hidden relative top-0 left-0 w-full bg-gray-800 p-4 transition-all duration-300 transform z-20 ${

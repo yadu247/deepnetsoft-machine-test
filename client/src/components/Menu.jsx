@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Menu = () => {
-  // State for categories
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
@@ -10,23 +9,18 @@ const Menu = () => {
   const [newCategoryName, setNewCategoryName] = useState('');
   const [newCategoryDescription, setNewCategoryDescription] = useState('');
 
-  // State for item modal
   const [itemModalOpen, setItemModalOpen] = useState(false);
   const [newItemName, setNewItemName] = useState('');
   const [newItemDescription, setNewItemDescription] = useState('');
   const [newItemPrice, setNewItemPrice] = useState('');
 
-  // State for items in each category
   const [items, setItems] = useState({});
 
-  // Fetch categories and items when the page loads
   useEffect(() => {
-    // Fetch categories from the backend
     axios
       .get('https://deepnetsoft-machine-test-backend.onrender.com/api/menu')
       .then(response => {
         setCategories(response.data);
-        // Fetch items for each category
         const initialItems = {};
         response.data.forEach(category => {
           initialItems[category.name] = [];
@@ -38,7 +32,6 @@ const Menu = () => {
       });
   }, []);
 
-  // Fetch items when a category is selected
   useEffect(() => {
     if (selectedCategory) {
       axios
@@ -57,17 +50,14 @@ const Menu = () => {
     }
   }, [selectedCategory]);
 
-  // Function to open modal for category
   const openModal = () => {
     setModalOpen(true);
   };
 
-  // Function to close modal for category
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  // Function to add a new category
   const addCategory = () => {
     if (newCategoryName && newCategoryDescription) {
       axios
@@ -91,17 +81,14 @@ const Menu = () => {
     }
   };
 
-  // Function to open item modal
   const openItemModal = () => {
     setItemModalOpen(true);
   };
 
-  // Function to close item modal
   const closeItemModal = () => {
     setItemModalOpen(false);
   };
 
-  // Function to add an item to a selected category
   const addItem = () => {
     if (newItemName && newItemDescription && newItemPrice) {
       axios
